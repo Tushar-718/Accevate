@@ -1,97 +1,266 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Accevate - React Native Application
 
-# Getting Started
+This is a React Native application built with TypeScript, Redux Toolkit for state management, and React Navigation for routing.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 📋 Prerequisites
 
-## Step 1: Start Metro
+Before you begin, ensure you have the following installed on your system:
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- **Node.js** (>= 20.x)
+- **Yarn** or **npm**
+- **React Native CLI**
+- **Android Studio** (for Android development)
+- **Xcode** (for iOS development - macOS only)
+- **CocoaPods** (for iOS dependencies - macOS only)
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+> **Note**: Make sure you have completed the [React Native Environment Setup](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
-```sh
-# Using npm
-npm start
+---
 
-# OR using Yarn
-yarn start
+## 🚀 Getting Started
+
+Follow these steps to install and run the application locally:
+
+### Step 1: Clone the Repository
+
+```bash
+git clone <repository-url>
+cd Accevate
 ```
 
-## Step 2: Build and run your app
+### Step 2: Create Environment File
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+Create a `.env` file in the root directory of the project:
 
-### Android
+```bash
+touch .env
+```
 
-```sh
-# Using npm
-npm run android
+Add the following content to the `.env` file:
 
-# OR using Yarn
+```env
+API_BASE_URL="Your API Base URL"
+```
+
+> **Important**: The `.env` file is already added to `.gitignore` to prevent sensitive data from being committed.
+
+### Step 3: Install Dependencies
+
+Install all the required Node modules:
+
+```bash
+yarn
+```
+
+Or if you're using npm:
+
+```bash
+npm install
+```
+
+### Step 4: Install iOS Dependencies (macOS only)
+
+If you're developing for iOS, install CocoaPods dependencies:
+
+```bash
+cd ios
+pod install
+cd ..
+```
+
+### Step 5: Start Metro Bundler
+
+Start the Metro bundler with cache reset:
+
+```bash
+yarn start --reset-cache
+```
+
+Or using npm:
+
+```bash
+npm start -- --reset-cache
+```
+
+> **Tip**: The `--reset-cache` flag clears the Metro bundler cache, which is useful when you encounter caching issues.
+
+### Step 6: Run the Application
+
+Open a **new terminal window** (keep Metro running in the previous terminal) and run:
+
+#### For Android:
+
+```bash
 yarn android
 ```
 
-### iOS
+Or using npm:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+npm run android
 ```
 
-Then, and every time you update your native dependencies, run:
+#### For iOS (macOS only):
 
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
+```bash
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+Or using npm:
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```bash
+npm run ios
+```
 
-## Step 3: Modify your app
+---
 
-Now that you have successfully run the app, let's make changes!
+## 📱 Available Scripts
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+- `yarn start` - Start Metro bundler
+- `yarn start --reset-cache` - Start Metro bundler with cache reset
+- `yarn android` - Run the app on Android emulator/device
+- `yarn ios` - Run the app on iOS simulator/device
+- `yarn lint` - Run ESLint to check code quality
+- `yarn test` - Run Jest tests
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+---
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## 🏗️ Project Structure
 
-## Congratulations! :tada:
+```
+Accevate/
+├── src/
+│   ├── constants/        # App constants (colors, strings)
+│   ├── navigation/       # Navigation configuration
+│   ├── screens/          # Screen components
+│   ├── services/         # API services and axios instance
+│   ├── store/            # Redux store and slices
+│   ├── styles/           # Common styles
+│   └── utils/            # Utility functions
+├── android/              # Android native code
+├── ios/                  # iOS native code
+├── .env                  # Environment variables (not committed)
+└── App.tsx               # Root component
+```
 
-You've successfully run and modified your React Native App. :partying_face:
+---
 
-### Now what?
+## 🔧 Troubleshooting
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+### Metro Bundler Issues
 
-# Troubleshooting
+If you encounter issues with the Metro bundler, try:
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+```bash
+# Clear Metro cache
+yarn start --reset-cache
 
-# Learn More
+# Or manually clear cache
+rm -rf node_modules/.cache
+```
 
-To learn more about React Native, take a look at the following resources:
+### Android Build Issues
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+```bash
+# Clean Android build
+cd android
+./gradlew clean
+cd ..
+
+# Rebuild the app
+yarn android
+```
+
+### iOS Build Issues
+
+```bash
+# Clean iOS build
+cd ios
+rm -rf Pods Podfile.lock
+pod install
+cd ..
+
+# Rebuild the app
+yarn ios
+```
+
+### Icons Not Showing
+
+If icons are not displaying properly:
+
+```bash
+# Re-link assets
+npx react-native-asset
+
+# For iOS, reinstall pods
+cd ios && pod install && cd ..
+
+# Rebuild the app
+yarn android  # or yarn ios
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- **React Native** 0.83.1
+- **TypeScript** 5.8.3
+- **Redux Toolkit** 2.11.2
+- **React Navigation** 7.x
+- **Axios** 1.13.4
+- **React Native Vector Icons** 10.3.0
+- **AsyncStorage** 2.2.0
+
+---
+
+## 📝 Environment Variables
+
+The application uses the following environment variables:
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `API_BASE_URL` | Base URL for API requests | `Your API Base URL` |
+
+---
+
+## 🤝 Contributing
+
+1. Create a new branch for your feature
+2. Make your changes
+3. Test thoroughly on both Android and iOS
+4. Submit a pull request
+
+---
+
+## 📄 License
+
+This project is private and proprietary.
+
+---
+
+## 📞 Support
+
+For any issues or questions, please contact the development team.
+
+---
+
+## 🎯 Quick Start Summary
+
+```bash
+# 1. Create .env file with API_BASE_URL
+echo "API_BASE_URL=Your API Base URL" > .env
+
+# 2. Install dependencies
+yarn
+
+# 3. Install iOS dependencies (macOS only)
+cd ios && pod install && cd ..
+
+# 4. Start Metro bundler
+yarn start --reset-cache
+
+# 5. In a new terminal, run the app
+yarn android  # or yarn ios
+```
+
+Happy coding! 🚀
